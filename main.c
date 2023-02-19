@@ -1,9 +1,73 @@
-#include "biblioteka.h"
+// #include "main.h"
+#include <stdio.h>
 
-int main(int argc, char **argv) {
-  unsigned char ch = 0x01;
-  // 000000001
-  print_bits_state(ch);
+#define BIT_8 0x80
+#define BIT_7 0x40
+#define BIT_6 0x20
+#define BIT_5 0x10
+#define BIT_4 0x08
+#define BIT_3 0x04
+#define BIT_2 0x02
+#define BIT_1 0x01
 
-  return 0;
+// переводит с десятичного в двоичную систему
+// этот функция работает быстрее
+void print_bits_state(unsigned char aCh) {
+  printf("%i: ", aCh);
+  printf("%i", (aCh & BIT_8) ? 1 : 0);
+  printf("%i", (aCh & BIT_7) ? 1 : 0);
+  printf("%i", (aCh & BIT_6) ? 1 : 0);
+  printf("%i", (aCh & BIT_5) ? 1 : 0);
+  printf("%i", (aCh & BIT_4) ? 1 : 0);
+  printf("%i", (aCh & BIT_3) ? 1 : 0);
+  printf("%i", (aCh & BIT_2) ? 1 : 0);
+  printf("%i\n", (aCh & BIT_1) ? 1 : 0);
 }
+
+// переводит с десятичного в двоичную систему
+void print_bits_state_shift(unsigned char aCh) {
+  int i;
+  printf("%i: ", aCh);
+  for (i = 7; i >= 0; --i) {
+    printf("%i", ((aCh >> i) & BIT_1) ? 1 : 0);
+  }
+  printf("\n");
+}
+
+unsigned char set_bit(unsigned char aCh, unsigned char aN) {
+  // return (aCh | aN);
+  return (aCh | (1 << (aN - 1)));
+}
+unsigned char clear_bit(unsigned char aCh, unsigned char aN) {
+  return (aCh & ~(1 << (aN - 1)));
+}
+unsigned char invert_bit(unsigned char aCh, unsigned char aN) {
+  return (aCh ^ (1 << (aN - 1)));
+}
+
+unsigned char test_bit(unsigned char aCh, unsigned char aN) {
+  return (aCh & (1 << (aN - 1)));
+}
+
+int s21_add_int(unsigned char aCh, unsigned char aN, unsigned char res) {
+  return res = aCh | aN;
+}
+
+// 1 2 3 A
+// 4 5 6 B
+// 7 8 9 C
+// D 0 E F
+// это шестнадцатиричное число
+
+// на вход приходит четыре символа
+// допустим 1234 [0001][0010][0011][0100] - в общей сложности это займет 2 байта
+// или же 8 битов
+// на выходe мы должны выдать какое-то значение в 4 байта. почему 4 байта?
+// потому-что мы должны будем зашифровать всэ это в шестнадцатиричной системе
+
+int main() { return 0; }
+
+// 48 - 00110000
+//  6 - 00000110
+// |
+// 54 - 00110110
