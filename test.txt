@@ -58,4 +58,4 @@
 //   unsigned char q = 0x41;       // в шестнадцатиричной системе
 //   unsigned char q = 0101;       // в восьмеричной системе
 //   unsigned char q = 0b01000001; // в двоичном ввиде можно передать вот так
-//   print_bits_state(q);
+   print_bits_state(q);
