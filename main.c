@@ -1,6 +1,14 @@
 // #include "main.h"
 #include <stdio.h>
 
+// #define BIT_16 0x20480
+// #define BIT_15 0x10240
+// #define BIT_14 0x5120
+// #define BIT_13 0x2560
+// #define BIT_12 0x1280
+// #define BIT_11 0x640
+// #define BIT_10 0x320
+// #define BIT_9 0x160
 #define BIT_8 0x80
 #define BIT_7 0x40
 #define BIT_6 0x20
@@ -12,8 +20,16 @@
 
 // переводит с десятичного в двоичную систему
 // этот функция работает быстрее
-void print_bits_state(unsigned char aCh) {
+void print_bits_state(unsigned int aCh) {
   printf("%i: ", aCh);
+  // printf("%i", (aCh & BIT_16) ? 1 : 0);
+  // printf("%i", (aCh & BIT_15) ? 1 : 0);
+  // printf("%i", (aCh & BIT_14) ? 1 : 0);
+  // printf("%i", (aCh & BIT_13) ? 1 : 0);
+  // printf("%i", (aCh & BIT_12) ? 1 : 0);
+  // printf("%i", (aCh & BIT_11) ? 1 : 0);
+  // printf("%i", (aCh & BIT_10) ? 1 : 0);
+  // printf("%i", (aCh & BIT_9) ? 1 : 0);
   printf("%i", (aCh & BIT_8) ? 1 : 0);
   printf("%i", (aCh & BIT_7) ? 1 : 0);
   printf("%i", (aCh & BIT_6) ? 1 : 0);
@@ -65,7 +81,10 @@ int s21_add_int(unsigned char aCh, unsigned char aN, unsigned char res) {
 // на выходe мы должны выдать какое-то значение в 4 байта. почему 4 байта?
 // потому-что мы должны будем зашифровать всэ это в шестнадцатиричной системе
 
-int main() { return 0; }
+int main() {
+  print_bits_state(255);
+  return 0;
+}
 
 // 48 - 00110000
 //  6 - 00000110
