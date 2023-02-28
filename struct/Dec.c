@@ -47,7 +47,7 @@ int decTOint(int low[]) {
 }
 
 int main(int argc, char const *argv[]) {
-  int num = 2147483647;
+  int num = 10;
   //   int low[32];
   s21_decimal mytwo;
   int *ptr = &mytwo.bits[0];
@@ -59,6 +59,9 @@ int main(int argc, char const *argv[]) {
     printf("%d", ptr[i]);
     i++;
   }
-  decTOint(ptr);
-  free(ptr);
+  printf("\n==%d==\n", lol.ost);
+  printf("==%d==\n", lol.sel);
+  printf("==%d==\n", lol.del);
+  // decTOint(ptr);
+  // free(ptr);
 }
