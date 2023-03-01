@@ -46,6 +46,18 @@ int decTOint(int low[]) {
   return 0;
 }
 
+void floatToDec(float num, s21_decimal dec) {  
+  printf("num ===%f\n" , num);
+  dec.bits[2] = 0;
+  for (size_t i = 0; i < 2; i++) {
+    num *=  10 ;
+    dec.bits[2] ++;
+    }
+  printf("\n%d\n" , dec.bits[2]);
+  printf("num ===%f\n" , num);
+  decimal_to_binary(num);    
+}
+
 int main(int argc, char const *argv[]) {
   int num = 10;
   //   int low[32];
