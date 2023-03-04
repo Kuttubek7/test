@@ -3,6 +3,10 @@
 #include <stdlib.h>
 #include <string.h>
 
+typedef struct {
+  int bits[4];
+} decimal;
+
 #define BIT_1 0x01
 
 // может возводить в степень до 30
@@ -85,16 +89,43 @@ int slojenie(uint32_t value1, uint32_t value2, uint32_t result) {
   IntToDec(mass);
   return 0;
 }
-
-int main(void) {
-  uint32_t n = 2113183289;  //
-  uint32_t i = 1334764525;  // 1011
-  uint32_t res = 0;         // 1010
-  int dva = 0b1001101100001001000001000101001;
-  // IntToDec();
-  slojenie(n, i, res);
+int floatToDec(float value, decimal res) {
+  int result = value / 32;
+  if (result == 1) {
+    res.bits[0] = value;
+  } else if (result > 1) {
+    res.bits[1] = value;
+  } else if (result >= 2) {
+    res.bits[2] = value;
+  } else if (result >= 3) {
+    res.bits[3] = value;
+  }
+  int mass[100] = {0};
+  int mass1[100] = {0};
+  int j = 0;
+  printf("++%lf++: ", value);
+  for (int i = 0; i < 32; i++) {
+    value *= 2;
+    int bit = (int)value;
+    printf("%d", bit);
+    value -= bit;
+  }
+  printf("\n");
   return 0;
 }
-// 1111101111101001001111000111001
-// 1001111100011101110001111101101
-// 1001101100001001000001000101001
+
+// побитовый сдвиг влево умножает
+// побитовый сдвиг вправо делит
+// float - 4 байта
+// double - 8 байт
+// long long - 8 байт
+// lond double - 8 байт
+
+// binary to int
+int main(void) {
+  int a = 63;
+  int b = 31;
+  printf("%d %o %x %X\n", a, a, a, a);
+  printf("%d %o %x %X\n", b, b, b, b);
+  return 0;
+}
